@@ -1,0 +1,46 @@
+{
+  "name": "mswali-survey-interview",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Evans Chirchir-evantoo56@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "mongodb": "^3.6.3",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "corsify": "^2.1.0",
+    "cuid": "^2.1.8",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.9.10",
+    "morgan": "^1.10.0",
+    "productionize": "^4.1.0",
+    "redis": "^3.0.2",
+    "req-logger": "^2.0.0",
+    "secure-password": "^3.1.0",
+    "send-data": "^8.0.0",
+    "validator": "^13.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiptoo/mswali-survey.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kiptoo/mswali-survey/issues"
+  },
+  "homepage": "https://github.com/kiptoo/mswali-survey#readme",
+  "engines": {
+    "node": "12",
+    "npm": "6"
+  }
+}

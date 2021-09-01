@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mswali Test Survey</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin">
+  <ion-row>
+    <ion-col size="12">
+      <ion-card class="ion-padding">
+        <ion-card-header class="favCard-header">
+          <ion-card-title>{{survey?.title}}</ion-card-title>
+          <ion-card-subtitle>{{survey?.description}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content class="scrollingContainer">
+          <ion-grid class="ion-margin">
+            <ion-row>
+              <ion-col *ngFor="let header of tableHeaders; let i=index "
+                >{{header}}</ion-col
+              >
+              <ion-col>actions</ion-col>
+            </ion-row>
+            <ion-row
+              *ngFor="let submission of survey?.submissions; let i=index "
+            >
+              <ion-col>{{ i + 1 }}</ion-col>
+              <ion-col>{{ submission.name }}</ion-col>
+              <ion-col
+                *ngFor="let response of submission?.response; let i=index "
+              >
+                {{ response.answer.value}}
+              </ion-col>
+              <ion-col>
+                <ion-button (click)="showDetails(i)">
+                  <ion-icon name="eye-sharp"></ion-icon>
+                  <!-- <ion-icon *ngIf="showdetail" name="eye-off-sharp"></ion-icon> -->
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+        <ion-card class="ion-padding" *ngIf="showdetail">
+          <ion-card-header class="favCard-header">
+            <ion-card-title>Data Detail</ion-card-title>
+            <!-- <ion-card-subtitle>{{survey?.description}}</ion-card-subtitle> -->
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-item>
+              <ion-label>Name :{{selectedSubmission.name}}</ion-label>
+              <ion-label>Email:{{selectedSubmission.email}}</ion-label>
+              <ion-label>Phone.No :{{selectedSubmission.phone}}</ion-label>
+            </ion-item>
+            <ion-item
+              *ngFor="let response of selectedSubmission?.response; let i=index "
+            >
+              <ion-label>{{response.question_id.title}}</ion-label>
+              <h6>{{response.answer.value}}</h6>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

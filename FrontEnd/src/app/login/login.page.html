@@ -1,0 +1,65 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content padding>
+  <form [formGroup]="loginForm" class="ion-padding">
+    <ion-grid>
+      <ion-row class="ion-padding" justify-content-center>
+        <ion-col
+          class="ion-padding"
+          align-self-center
+          size-md="6"
+          size-lg="5"
+          size-xs="12"
+        >
+          <div text-center>
+            <h3>Login</h3>
+          </div>
+          <div padding>
+            <label>Username</label>
+            <ion-item>
+              <ion-input
+                type="text"
+                class="input ion-padding"
+                formControlName="email"
+                placeholder="email"
+                required
+              ></ion-input>
+            </ion-item>
+            <label>password</label>
+
+            <ion-item>
+              <ion-input
+                name="password"
+                type="password"
+                class="input ion-padding"
+                formControlName="password"
+                placeholder="Password"
+                required
+              ></ion-input>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button
+              size="large"
+              type="submit"
+              (click)="login()"
+              [disabled]="!loginForm.valid"
+              expand="block"
+              >Login</ion-button
+            >
+          </div>
+          <a
+            class="ion-padding"
+            [routerLink]="['/register']"
+            routerLinkActive="router-link-active"
+            >Register</a
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

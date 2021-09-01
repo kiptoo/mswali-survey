@@ -1,0 +1,147 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-chip>
+        <ion-avatar>
+          <img src="../../assets/avatar.svg" />
+        </ion-avatar>
+        <ion-label>{{username}}</ion-label>
+      </ion-chip>
+      <ion-button (click)="logout()">
+        <!-- <ion-icon slot="icon-only" name="logout"></ion-icon> -->
+
+        <ion-icon size="large" name="log-out-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Mswali Test Survey</ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1 class="ion-margin ion-padding">Edit Survey</h1>
+  <ion-content class="ion-margin">
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="ion-padding">
+          <ion-card-header class="favCard-header">
+            <ion-card-title>{{survey?.description}}</ion-card-title>
+            <ion-card-subtitle>{{survey?.description}}</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <form [formGroup]="SurveyForm" (ngSubmit)="onSubmit()">
+              <div class="form-header" formGroupName="survey_details">
+                <ion-label>Survey Title</ion-label>
+                <ion-item>
+                  <ion-input
+                    type="text"
+                    formControlName="title"
+                    name="title"
+                  ></ion-input>
+                </ion-item>
+                <ion-label>Description</ion-label>
+                <ion-item>
+                  <textarea
+                    type="text"
+                    formControlName="description"
+                    name="description"
+                  ></textarea>
+                </ion-item>
+              </div>
+
+              <ion-button (click)="addQuestion()">
+                Add Question
+                <!-- <ion-icon name="eye-outline" class="ion-padding"></ion-icon> -->
+                <!-- <ion-icon name="analytics-sharp" class="ion-padding"></ion-icon> -->
+                <ion-icon
+                  size="large"
+                  name="add-circle-outline"
+                  class="ion-padding"
+                ></ion-icon>
+                <!-- <ion-icon slot="icon-only" name="eye-outline"></ion-icon> -->
+              </ion-button>
+              <div formArrayName="questions">
+                <div
+                  class="questions"
+                  *ngFor="
+                    let question of SurveyForm.get('questions')['controls'];
+                    let questionIndex = index
+                  "
+                  [formGroupName]="questionIndex"
+                >
+                  <ion-button (click)="removeQuestion(questionIndex)">
+                    <ion-icon
+                      size="large"
+                      name="close-circle-outline"
+                    ></ion-icon>
+                  </ion-button>
+                  <ion-label>Question name</ion-label>
+                  <ion-item>
+                    <ion-input
+                      type="text"
+                      formControlName="name"
+                      name="title"
+                    ></ion-input>
+                  </ion-item>
+                  <ion-label>Question Title</ion-label>
+                  <ion-item>
+                    <ion-input
+                      type="text"
+                      formControlName="title"
+                      name="title"
+                    ></ion-input>
+                  </ion-item>
+                  <ion-label>Question type</ion-label>
+                  <ion-item>
+                    <ion-select formControlName="type" placeholder="Select One">
+                      <ion-select-option value="dropdown"
+                        >dropdown</ion-select-option
+                      >
+                      <ion-select-option value="radio">radio</ion-select-option>
+                      <!-- <ion-select-option value="text">text</ion-select-option>
+                    <ion-select-option value="textarea">textarea</ion-select-option> -->
+                    </ion-select>
+                  </ion-item>
+                  <ion-button (click)="addOption(question)">
+                    Add Option
+
+                    <ion-icon
+                      size="large"
+                      name="add-circle-outline"
+                      class="ion-padding"
+                    ></ion-icon>
+                  </ion-button>
+                  <div formArrayName="options">
+                    <div
+                      class="options"
+                      *ngFor="
+                    let option of question.get('options')['controls'];
+                    let optionIndex = index  "
+                      [formGroupName]="optionIndex"
+                    >
+                      <ion-button (click)="removeOption(question,optionIndex)">
+                        <ion-icon name="close-circle-outline"></ion-icon>
+                      </ion-button>
+                      <ion-label>Option Text</ion-label>
+                      <ion-item>
+                        <ion-input
+                          type="text"
+                          formControlName="value"
+                          name="value"
+                        ></ion-input>
+                      </ion-item>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ion-button color="primary" type="submit">Create</ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-content>
+</ion-content>

@@ -1,0 +1,10 @@
+{
+  "cordova-plugin-aes256-encryption": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-aes256-encryption"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}
